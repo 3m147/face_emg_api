@@ -1,0 +1,17 @@
+# 실험 D: DenseNet121 + Edge 채널 (4ch) + Best Loss
+data_root:   바이블코딩
+emotions:    [기쁨, 당황, 분노, 불안, 상처, 슬픔, 중립]
+train_ratio: 0.8
+val_ratio:   0.1
+backbone:    densenet121
+loss:        focal
+focal_gamma: 2.0
+epochs:      30
+batch_size:  32
+lr:          0.0001
+weight_decay: 0.0001
+scheduler:   cosine
+use_edge:    true
+num_workers: 0
+seed:        42
+output_dir:  output/bible/D_densenet121_focal_edge

@@ -1,0 +1,49 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Frontend code (served separately via Vercel)
+frontend/
+
+# Git
+.git/
+.gitignore
+
+# Mac OS
+.DS_Store
+
+# Training scripts (not needed for inference)
+train.py
+train_optimized.py
+experiment.py
+evaluate.py
+eval_only.py
+compare.py
+compare_runs.py
+visualize.py
+xai.py
+dataset.py
+model.py
+losses.py
+convert_onnx.py
+test_compare.py
+test_eval.py
+aihub/
+configs/
+바이블코딩/
+
+# Old model files (now using ONNX only)
+*.pth
+
+# Misc
+model_architecture.xml
+package-lock.json
+sync_frontend.sh
+vercel.json

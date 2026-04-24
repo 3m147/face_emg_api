@@ -1,0 +1,19 @@
+# AI Hub 실험 C: EfficientNet-B0 + FocalLoss (경량 + 성능)
+dataset:      aihub
+data_root:    G:/내 드라이브/aihub_cropped
+max_per_class: 16000
+emotions:     [기쁨, 당황, 분노, 불안, 상처, 슬픔, 중립]
+val_test_ratio: 0.5
+
+backbone:     efficientnet_b0
+loss:         focal
+focal_gamma:  2.0
+epochs:       30
+batch_size:   64
+lr:           1e-4
+weight_decay: 1e-4
+scheduler:    cosine
+use_edge:     false
+num_workers:  4
+seed:         42
+output_dir:   output/aihub/C_efficientnet_focal

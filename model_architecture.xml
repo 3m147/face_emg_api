@@ -1,0 +1,235 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="29.6.1">
+  <diagram name="face_emg 모델 구성도" id="face-emg-architecture">
+    <mxGraphModel dx="1678" dy="2093" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sec1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1a1a1a;" value="① 입력" vertex="1">
+          <mxGeometry height="30" width="120" x="60" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sec2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1a1a1a;" value="② 얼굴 검출" vertex="1">
+          <mxGeometry height="30" width="160" x="240" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sec3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1a1a1a;" value="③ 전처리" vertex="1">
+          <mxGeometry height="30" width="160" x="470" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sec4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1a1a1a;" value="④ 백본 (선택)" vertex="1">
+          <mxGeometry height="30" width="560" x="587" y="-120" as="geometry" />
+        </mxCell>
+        <mxCell id="sec5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1a1a1a;" value="⑤ 분류기" vertex="1">
+          <mxGeometry height="30" width="120" x="820" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="sec6" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1a1a1a;" value="⑥ 출력" vertex="1">
+          <mxGeometry height="30" width="100" x="1520" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="divider" parent="1" style="line;strokeWidth=1;fillColor=none;strokeColor=#b0b0b0;dashed=1;" value="" vertex="1">
+          <mxGeometry height="10" width="1610" x="90" y="276" as="geometry" />
+        </mxCell>
+        <mxCell id="input" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" value="&lt;b&gt;입력 이미지&lt;/b&gt;&lt;br&gt;임의 해상도&lt;br&gt;(웹캠·사진·영상)" vertex="1">
+          <mxGeometry height="80" width="140" x="40" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="detect" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;verticalAlign=middle;" value="&lt;b&gt;Haar Cascade&lt;/b&gt;&lt;br&gt;얼굴 검출&lt;br&gt;&lt;font color=&#39;#666666&#39;&gt;cv2.CascadeClassifier&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="160" x="230" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="detect_note" parent="1" style="text;html=1;strokeColor=#d6b656;fillColor=#fffde7;align=center;fontSize=10;rounded=1;" value="얼굴 미검출 시&lt;br&gt;중앙 정사각형 크롭" vertex="1">
+          <mxGeometry height="36" width="150" x="235" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="resize" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="&lt;b&gt;Resize&lt;/b&gt;&lt;br&gt;224 × 224" vertex="1">
+          <mxGeometry height="60" width="120" x="450" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="norm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="&lt;b&gt;Normalize&lt;/b&gt;&lt;br&gt;mean=[0.485,0.456,0.406]&lt;br&gt;std=[0.229,0.224,0.225]" vertex="1">
+          <mxGeometry height="60" width="160" x="450" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="aug" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="&lt;b&gt;Augmentation (train only)&lt;/b&gt;&lt;br&gt;RandomHFlip · RandomRotate(±15°)&lt;br&gt;ColorJitter · RandomErasing" vertex="1">
+          <mxGeometry height="60" width="190" x="435" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="preprocBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="235" width="210" x="430" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="eff_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=13;fontStyle=1;fontColor=#6a00bd;" value="EfficientNet-B0" vertex="1">
+          <mxGeometry height="25" width="200" x="805" y="-79" as="geometry" />
+        </mxCell>
+        <mxCell id="eff_stem" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="Stem Conv&lt;br&gt;3×3, stride=2, 32ch" vertex="1">
+          <mxGeometry height="45" width="190" x="810" y="-49" as="geometry" />
+        </mxCell>
+        <mxCell id="eff_mbconv" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="MBConv Blocks × 16&lt;br&gt;(MBConv1~6, SE, DropConnect)&lt;br&gt;16ch → 320ch" vertex="1">
+          <mxGeometry height="60" width="190" x="810" y="6" as="geometry" />
+        </mxCell>
+        <mxCell id="eff_head" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="Head Conv 1×1, 1280ch" vertex="1">
+          <mxGeometry height="40" width="190" x="810" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="eff_gap" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="Global Avg Pool&lt;br&gt;→ 1280-dim" vertex="1">
+          <mxGeometry height="40" width="190" x="810" y="126" as="geometry" />
+        </mxCell>
+        <mxCell id="effBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="265" width="210" x="800" y="-84" as="geometry" />
+        </mxCell>
+        <mxCell id="den_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=13;fontStyle=1;fontColor=#0050ef;" value="DenseNet121" vertex="1">
+          <mxGeometry height="25" width="200" x="810" y="345.5" as="geometry" />
+        </mxCell>
+        <mxCell id="den_conv0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="Conv0 7×7, stride=2, 64ch&lt;br&gt;+ MaxPool 3×3" vertex="1">
+          <mxGeometry height="45" width="200" x="800" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="den_db1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="Dense Block 1 (6 layers)&lt;br&gt;64ch → 256ch" vertex="1">
+          <mxGeometry height="40" width="200" x="800" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="den_tr1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#6c8ebf;fontSize=10;" value="Transition 1 (Conv 1×1 + AvgPool)" vertex="1">
+          <mxGeometry height="30" width="200" x="800" y="438" as="geometry" />
+        </mxCell>
+        <mxCell id="den_db23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="Dense Block 2 (12) + Transition 2&lt;br&gt;Dense Block 3 (24) + Transition 3" vertex="1">
+          <mxGeometry height="44" width="200" x="800" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="den_db4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="Dense Block 4 (16 layers)&lt;br&gt;→ 1024ch" vertex="1">
+          <mxGeometry height="37" width="200" x="800" y="528" as="geometry" />
+        </mxCell>
+        <mxCell id="denBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="280" width="220" x="785" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="orLabel" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8f8f8;strokeColor=#888888;fontSize=14;fontStyle=1;" value="OR" vertex="1">
+          <mxGeometry height="44" width="44" x="858" y="208" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontStyle=1;fontColor=#333333;" value="공통 분류기" vertex="1">
+          <mxGeometry height="25" width="180" x="1080" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_gap" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="Global Avg Pool → 1024-dim" vertex="1">
+          <mxGeometry height="40" width="170" x="1085" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_drop" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" value="Dropout (p=0.3)" vertex="1">
+          <mxGeometry height="40" width="170" x="1085" y="116" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_fc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="&lt;b&gt;Linear (in → 7)&lt;/b&gt;&lt;br&gt;EfficientNet: 1280→7&lt;br&gt;DenseNet121: 1024→7" vertex="1">
+          <mxGeometry height="60" width="170" x="1085" y="166" as="geometry" />
+        </mxCell>
+        <mxCell id="softmax" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;arcSize=50;" value="Softmax" vertex="1">
+          <mxGeometry height="45" width="100" x="1400" y="193.5" as="geometry" />
+        </mxCell>
+        <mxCell id="out_joy" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="기쁨" vertex="1">
+          <mxGeometry height="36" width="70" x="1560" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="out_panic" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="당황" vertex="1">
+          <mxGeometry height="36" width="70" x="1560" y="144" as="geometry" />
+        </mxCell>
+        <mxCell id="out_angry" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="분노" vertex="1">
+          <mxGeometry height="34" width="70" x="1560" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="out_anxiety" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="불안" vertex="1">
+          <mxGeometry height="36" width="70" x="1560" y="232" as="geometry" />
+        </mxCell>
+        <mxCell id="out_hurt" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="상처" vertex="1">
+          <mxGeometry height="36" width="70" x="1560" y="276" as="geometry" />
+        </mxCell>
+        <mxCell id="out_sad" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="슬픔" vertex="1">
+          <mxGeometry height="36" width="70" x="1560" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="out_neut" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="중립" vertex="1">
+          <mxGeometry height="36" width="70" x="1560" y="364" as="geometry" />
+        </mxCell>
+        <mxCell id="loss_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f0;strokeColor=#cc0000;fontSize=11;" value="&lt;b&gt;손실 함수&lt;/b&gt;&lt;br&gt;A: CrossEntropy&lt;br&gt;B/C/D: Focal Loss (γ=2.0)" vertex="1">
+          <mxGeometry height="70" width="185" x="774.5" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="exp_header" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12;fontStyle=1;" value="&lt;b&gt;실험 구성 (AI Hub 데이터)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="25" width="300" x="10" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="exp_table" parent="1" style="text;html=1;strokeColor=#888888;fillColor=#fafafa;align=left;verticalAlign=top;spacingLeft=4;rounded=1;" value="&lt;table border=&#39;1&#39; style=&#39;border-collapse:collapse;font-size:11px;width:100%&#39;&gt;&lt;tr style=&#39;background:#eee&#39;&gt;&lt;th&gt;실험&lt;/th&gt;&lt;th&gt;백본&lt;/th&gt;&lt;th&gt;손실&lt;/th&gt;&lt;th&gt;데이터&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;DenseNet121&lt;/td&gt;&lt;td&gt;CrossEntropy&lt;/td&gt;&lt;td&gt;16K/class&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;DenseNet121&lt;/td&gt;&lt;td&gt;Focal (γ=2)&lt;/td&gt;&lt;td&gt;16K/class&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;EfficientNet-B0&lt;/td&gt;&lt;td&gt;Focal (γ=2)&lt;/td&gt;&lt;td&gt;16K/class&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;DenseNet121&lt;/td&gt;&lt;td&gt;Focal (γ=2)&lt;/td&gt;&lt;td&gt;전체&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="110" width="430" x="260" y="561.75" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="input" style="edgeStyle=orthogonalEdgeStyle;" target="detect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="detect" style="edgeStyle=orthogonalEdgeStyle;" target="resize">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="resize" style="edgeStyle=orthogonalEdgeStyle;" target="norm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="norm" style="edgeStyle=orthogonalEdgeStyle;" target="aug">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610.06" y="-0.030000000000001137" />
+              <mxPoint x="805.06" y="-0.030000000000001137" />
+            </Array>
+            <mxPoint x="610.06" y="195.97" as="sourcePoint" />
+            <mxPoint x="805.0011764705882" y="0.9699999999999989" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="309.24" />
+              <mxPoint x="640" y="309.24" />
+              <mxPoint x="640" y="459.24" />
+              <mxPoint x="820" y="459.24" />
+            </Array>
+            <mxPoint x="620" y="186.74" as="sourcePoint" />
+            <mxPoint x="880" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="eff_gap" style="edgeStyle=orthogonalEdgeStyle;" target="cls_drop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="clsBox" style="edgeStyle=orthogonalEdgeStyle;" target="cls_gap">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="cls_gap" style="edgeStyle=orthogonalEdgeStyle;" target="cls_drop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="cls_drop" style="edgeStyle=orthogonalEdgeStyle;" target="cls_fc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="cls_fc" style="edgeStyle=orthogonalEdgeStyle;" target="softmax">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;" target="out_joy">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1549.9999999999995" y="236.0588235294117" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;" target="out_panic">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1549.9999999999995" y="236.0588235294117" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;" target="out_angry">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1550" y="200" />
+            </Array>
+            <mxPoint x="1549.9999999999995" y="236.0588235294117" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;" target="out_anxiety">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1549.9999999999995" y="236.0588235294117" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;" target="out_hurt">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1549.9999999999995" y="236.0588235294117" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;" target="out_sad">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1549.9999999999995" y="236.0588235294117" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;" target="out_neut">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1549.9999999999995" y="236.0588235294117" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Rd64dyoe_xer-fRKthJw-1" edge="1" parent="1" source="den_db4" style="edgeStyle=orthogonalEdgeStyle;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000" y="547" as="sourcePoint" />
+            <mxPoint x="1180" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="clsBox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="215" width="230" x="1055" y="23.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

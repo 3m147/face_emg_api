@@ -1,0 +1,16 @@
+# 실험 C: EfficientNet-B0 + CrossEntropy (속도/정확도 비교)
+data_root:   바이블코딩
+emotions:    [기쁨, 당황, 분노, 불안, 상처, 슬픔, 중립]
+train_ratio: 0.8
+val_ratio:   0.1
+backbone:    efficientnet_b0
+loss:        ce
+epochs:      30
+batch_size:  32
+lr:          0.0001
+weight_decay: 0.0001
+scheduler:   cosine
+use_edge:    false
+num_workers: 0
+seed:        42
+output_dir:  output/bible/C_efficientnet_ce

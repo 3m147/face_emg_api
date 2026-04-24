@@ -1,0 +1,20 @@
+# AI Hub 실험 D: DenseNet121 + FocalLoss + 전체 데이터 (클래스 가중치)
+# max_per_class: 0 → 전체 사용, 클래스 불균형은 Focal Loss로 처리
+dataset:      aihub
+data_root:    G:/내 드라이브/aihub_cropped
+max_per_class: 0               # 전체 데이터 사용 (클래스별 16K~60K)
+emotions:     [기쁨, 당황, 분노, 불안, 상처, 슬픔, 중립]
+val_test_ratio: 0.5
+
+backbone:     densenet121
+loss:         focal
+focal_gamma:  2.0
+epochs:       20               # 데이터 많아 epoch 줄임
+batch_size:   64
+lr:           1e-4
+weight_decay: 1e-4
+scheduler:    cosine
+use_edge:     false
+num_workers:  4
+seed:         42
+output_dir:   output/aihub/D_densenet121_focal_full
