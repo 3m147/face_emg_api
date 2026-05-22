@@ -4,6 +4,7 @@ import ModelCompareTab from './components/ModelCompareTab'
 import PipelineTab from './components/PipelineTab'
 import RealtimeTab from './components/RealtimeTab'
 import CustomModelTab from './components/CustomModelTab'
+import StartPage from './components/StartPage'
 
 const TABS = [
   {
@@ -66,8 +67,13 @@ const TAB_HEADER = {
 
 export default function App() {
   const [tab, setTab] = useState('realtime')
+  const [showStart, setShowStart] = useState(true)
 
   const header = TAB_HEADER[tab]
+
+  if (showStart) {
+    return <StartPage onEnter={() => setShowStart(false)} />
+  }
 
   return (
     <div className="flex flex-col h-[100dvh] max-w-[480px] mx-auto relative overflow-hidden animated-bg">
