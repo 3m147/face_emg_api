@@ -26,20 +26,4 @@ export const api = {
     axios.post(`${BASE}/analyze/base64`, { image_b64: imageB64, model_id: modelId, compare }),
 
   pipelineImageUrl: (name) => `${BASE}/pipeline/${name}`,
-
-  uploadCustomModel: (file) => {
-    const form = new FormData()
-    form.append('file', file)
-    return axios.post(`${BASE}/custom-model/upload`, form)
-  },
-
-  analyzeCustomModel: (file, token) => {
-    const form = new FormData()
-    form.append('file', file)
-    form.append('token', token)
-    return axios.post(`${BASE}/custom-model/analyze`, form)
-  },
-
-  deleteCustomModel: (token) =>
-    axios.delete(`${BASE}/custom-model/${token}`),
 }
