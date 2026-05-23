@@ -53,8 +53,8 @@
 ### - 🧠 AI / Deep Learning
 <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white" height="25" /> <img src="https://img.shields.io/badge/ONNX-005C84?style=flat&logo=onnx&logoColor=white" height="25" /> <img src="https://img.shields.io/badge/ResNet--18-00599C?style=flat&logo=intel&logoColor=white" height="25" />
 
-### - ☁️ 실행 환경 (Infra)
-<img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" height="25" />
+### - ☁️ 실행 환경 (Infra) & 배포 (Deployment)
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" height="25" /> <img src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white" height="25" /> <img src="https://img.shields.io/badge/Render-46E3B7?style=flat&logo=render&logoColor=white" height="25" />
 
 ---
 
@@ -116,8 +116,10 @@ graph TD
 ## 💡 프로젝트 핵심 인사이트 & 배운 점 (Junior Developer View)
 
 * **실제 서비스 관점의 모델 서빙 (ONNX Runtime CPU 최적화)**:
-  PyTorch 모델(`.pth`)을 그대로 사용하지 않고 **ONNX 포맷으로 변환 및 직렬화**하여 서빙 엔진의 딥러닝 프레임워크 의존성을 제거했습니다. 이를 통해 GPU가 없는 CPU 인프라 환경에서도 단일 모델 기준 **평균 10ms 이내의 실시간 추론 속도**를 달성하며 실무에서 중요시하는 성능 및 인프라 비용 절감에 대한 감각을 길렀습니다.
+  PyTorch 모델(`.pth`)을 그대로 사용하지 않고 **ONNX 포맷으로 변환 및 직렬화**하여 서빙 엔진의 딥러닝 프레임워크 의존성을 제거했습니다. 이를 통해 GPU가 없는 CPU 인프라 환경(**Render**)에서도 단일 모델 기준 **평균 10ms 이내의 실시간 추론 속도**를 달성하며 실무에서 중요시하는 성능 및 인프라 비용 절감에 대한 감각을 길렀습니다.
 * **MediaPipe FaceMesh 기반 경량 데이터 전처리**:
   대용량 이미지를 통째로 신경망에 통과시키는 비효율을 방지하고자 백엔드 초입에 **MediaPipe**를 연계해 고속으로 얼굴 영역만을 Bounding Box로 탐지하고 정규화 크롭한 뒤, 가벼운 랜드마크 데이터 세트와 함께 활용하는 경량 전처리 파이프라인을 구축하여 처리 속도를 최적화했습니다.
 * **이종 모델 앙상블 분석 프레임워크 구축**:
   다양한 백본 모델들을 직접 학습시키고, 웹 프론트엔드상에 이들의 성능과 실시간 분석 결과를 대조해볼 수 있는 차트 시스템을 손수 설계함으로써, 머신러닝 결과물을 단순 수치로만 보는 것이 아니라 **웹 서비스 환경에서 시각적으로 검증하고 제어하는 실무적 풀스택 개발 역량**을 함양했습니다.
+* **클라우드 환경 기반의 무중단 배포 경험 (Vercel & Render)**:
+  프론트엔드는 **Vercel** 플랫폼을 이용하여 React 빌드 결과물을 전 세계 CDN 에지로 호스팅하고 SSL 보안 연결 및 캐싱 성능을 확보했습니다. 백엔드는 **Render**에서 제공하는 Docker 컨테이너 배포 환경을 통해 FastAPI 서버의 지속적인 클라우드 실행 및 로드 관리를 실전처럼 운영해 보았습니다.
