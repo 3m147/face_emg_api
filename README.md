@@ -7,6 +7,19 @@
 
 ---
 
+## 📸 프로젝트 미리보기 (Preview)
+
+<p align="center">
+  <img src="./assets/start-page.png" alt="Face-Actor 시작 페이지" width="420" />
+  <img src="./assets/model-compare.png" alt="Face-Actor 모델 벤치마크 페이지" width="420" />
+</p>
+
+### 🎬 데모 영상
+
+- [데모 영상 1](./assets/demo-1.mov)
+- [데모 영상 2](./assets/demo-2.mov)
+- [데모 영상 3](./assets/demo-3.mov)
+
 ## 👥 팀 구성 및 모델 라인업 (Team Registry)
 
 본 프로젝트는 **협업을 통해 개발된 이종 딥러닝 모델들**을 단일 웹 플랫폼으로 통합하여 벤치마킹할 수 있도록 구현되었습니다.
@@ -86,6 +99,11 @@ graph TD
 ## 주요 화면 설명
 
 ### 1. 시작 페이지 (Start Page)
+
+<p align="center">
+  <img src="./assets/start-page.png" alt="Face-Actor 시작 페이지" width="780" />
+</p>
+
 * **화려한 인터랙티브 첫 화면**<br>
   - 뒷배경에 부드럽게 움직이는 입자(Particles) 효과와 그라디언트 글로우 라이팅을 구현하여 세련된 첫인상을 남깁니다.<br>
   - 상단에는 7가지 감정을 순환하며 표시하는 롤링 뱃지(Emotion Ticker)와 감정 무지개 바를 배치해 서비스 주제를 직관적으로 전달합니다.<br>
@@ -102,6 +120,11 @@ graph TD
   - 단일 모델 분석 시 사용자가 직접 원하는 백본 모델을 선택하여 분석 결과를 받아볼 수 있으며, 여러 모델의 감정 분포를 차트로 직관적이게 분석합니다.<br><br>
 
 ### 4. M-Ensemble 모델 벤치마크 페이지 (Model Compare Tab)
+
+<p align="center">
+  <img src="./assets/model-compare.png" alt="Face-Actor 모델 벤치마크 페이지" width="780" />
+</p>
+
 * **여러 딥러닝 모델의 객관적 성능 비교**<br>
   - 개발 완료된 이종 모델(ResNet-18, DenseNet-121, EfficientNetV2-S, MobileNet-V2)의 전체 정확도(Accuracy) 및 감정별 F1-Score 지표를 정갈한 테이블(성능표) 형식으로 정리하여 비교 분석합니다.<br>
   - Recharts 라이브러리를 통해 전체 정확도 및 클래스별 F1-Score를 동적 그래프로 비교 시각화하여 어떤 모델이 실시간성 및 신뢰도에 적합한지 벤치마킹할 수 있습니다.<br><br>
